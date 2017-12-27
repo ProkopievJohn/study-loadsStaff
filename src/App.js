@@ -11,7 +11,7 @@ import axios from 'axios';
 
  
 const apiUri = 'http://localhost:3001/api';
-
+const appUrl = 'http://localhost:3000';
 
 class App extends Component {
   state = {
@@ -158,9 +158,9 @@ class App extends Component {
 
     return (
       <div>
-        <header className='header' href='/'>
-          <a className='devico_logo'>
-            <img src='./img/devico_logo.svg' height='70px' width='70px'/>
+        <header className='header' >
+          <a href={appUrl}>
+            <img className='devico_logo' src='./img/devico_logo.svg'/>
           </a>
         </header>
         <MuiThemeProvider className='App'>
@@ -173,26 +173,28 @@ class App extends Component {
 
               />
             </div>
-            <div className='btn_panel'>
-              <Button showModal={() => this.showModal('user', 'Add', false, 'projects')} btnName='Add user' className='top_btn'/>
-              <Button showModal={() => this.showModal('project', 'Add', false, 'users')} btnName='Add project' className='top_btn'/>
+            <div className='main-space'>
+              <div className='btn_panel'>
+                <Button showModal={() => this.showModal('user', 'Show', false, 'projects')} btnName='Add user' className='top_btn'/>
+                <Button showModal={() => this.showModal('project', 'Show', false, 'users')} btnName='Add project' className='top_btn'/>
+              </div>
+
+              <div>
+                <MainTable className='main' data={renderData} />
+              </div>
+
+              <Modal 
+                    data={renderData}
+                    preset={preset}
+                    handlerSubmit={this.handlerSubmit}
+                    closeModal={this.closeModal} 
+                    elementType={elementType}
+                    elementAction={elementAction}
+                    open={showModal}
+                    list={list}
+              /> 
+
             </div>
-
-            <div>
-              <MainTable className='main' data={renderData} />
-            </div>
-
-            <Modal 
-                  data={renderData}
-                  preset={preset}
-                  handlerSubmit={this.handlerSubmit}
-                  closeModal={this.closeModal} 
-                  elementType={elementType}
-                  elementAction={elementAction}
-                  open={showModal}
-                  list={list}
-            /> 
-
           </div>  
         </MuiThemeProvider>
         <footer className='footer'>
