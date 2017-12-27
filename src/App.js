@@ -168,15 +168,20 @@ class App extends Component {
           <div style={{height: '100%', width: '100%'}}>
             <div className='left-menu'>
               <LeftMenu 
-                label={'Employeers'}
+                label='Employeers'
+                data={renderData.users}
+
+              />
+              <LeftMenu 
+                label='Projects'
                 data={renderData.users}
 
               />
             </div>
             <div className='main-space'>
               <div className='btn_panel'>
-                <Button showModal={() => this.showModal('user', 'Show', false, 'projects')} btnName='Add user' className='top_btn'/>
-                <Button showModal={() => this.showModal('project', 'Show', false, 'users')} btnName='Add project' className='top_btn'/>
+                <Button btnName='Show users' className='top_btn'/>
+                <Button btnName='Show projects' className='top_btn'/>
               </div>
 
               <div>
