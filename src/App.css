@@ -1,0 +1,124 @@
+body {
+  font-family: Roboto, sans-serif;
+}
+
+.App {
+  float: center;
+  margin: 50px;
+  height: 100%;
+  width: 100%;
+}
+ 
+tr:hover {
+  background-color: #b3b3b341;
+  color: black;
+}
+
+td {
+  padding: 5px;
+}
+
+tr {
+  border-top: 1px solid rgba(124, 124, 124, 0.342);
+  min-height: 30px;
+  max-height: 30px;
+}
+
+tbody {
+  padding: 10px 20px;
+}
+
+th {
+  background: rgba(168, 168, 168, 0.507);
+  height: 30px;
+  font-size: 16px;
+  color: #303030;
+}
+
+table {
+  margin-top: 50px;
+  border-collapse: collapse;
+  text-align: center; 
+  color: #272727
+}
+
+.mainTable {
+  padding-top: 50px;
+  margin-left: 30%;
+  width: 30%;
+  float: left;
+}
+
+.secondaryTable td:last-child:hover{
+  background-color: #ffa7a77a;
+  color: rgba(196, 19, 19, 0.795);
+}
+
+.secondaryTable td:last-child {
+  width: 20px;
+  font-family: Roboto, sans-serif;
+}
+
+.secondaryTable {
+  margin-left: 5%;
+  width: 20%;
+  float: left;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgb(53, 53, 53);
+  width: 100%;
+  color: #fff;
+  height: 90px;
+}
+
+.devico_logo {
+  margin-left: 10%;
+  margin-top: 10px;
+  width: 70px;
+  height: 70px;
+}
+
+.footer {
+  background-color: rgb(53, 53, 53);
+  height: 10px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.company-copyright {
+  color: #fff;
+  font-size: 10px;
+  justify-content: flex-start;
+  margin-left: 10%;
+  align-self: center;
+  display: inline-block;
+}
+
+.version {
+  color: #fff;
+  font-size: 10px;
+  align-self: center;
+  margin-left: 70%;
+  display: inline-block;
+}
+
+.left-menu {
+  width: 500px;
+  height: 100%;
+  margin-top: 90px;
+}
+
+.raised_button_employers {
+
+}
