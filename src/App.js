@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import config from './config.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MainTable from './components/mainTable';
 import Button from './components/button';
@@ -9,9 +9,6 @@ import LeftMenu from './components/leftMenu'
 import controller from './controller';
 import axios from 'axios';
 
- 
-const apiUri = 'http://localhost:3001/api';
-const appUrl = 'http://localhost:3000';
 
 class App extends Component {
   state = {
@@ -57,8 +54,8 @@ class App extends Component {
     let data = {users: [], projects: []};
 
     try {
-      data.projects = await controller(apiUri + '/projects', {method: 'GET'});
-      data.users = await controller(apiUri + '/users', {method: 'GET'});
+      data.projects = await controller(config.apiUri + '/projects', {method: 'GET'});
+      data.users = await controller(config.apiUri + '/users', {method: 'GET'});
       if (data.projects && data.users) {
         data.projects.map(async proj => {
           data.users.map((user, i) => {
@@ -105,13 +102,13 @@ class App extends Component {
         name: preset.name,
         projects: arr
       };
-      config.url = `${apiUri} /user/ ${preset._id}`;
+      config.url = `${config.apiUri} /user/ ${preset._id}`;
       await axios(config);
     } else {
       data = {
         name: preset.name
       };
-      config.url = `${apiUri} /project/ ${preset._id}`;
+      config.url = `${config.apiUri} /project/ ${preset._id}`;
       axios(config);
       if (arr && arr.length > 0) {
         arr.map((item) => {
@@ -133,7 +130,7 @@ class App extends Component {
             }
           })
           console.log(data);
-          config.url = `${apiUri} /users/ ${item._id}`;
+          config.url = `${config.apiUri} /users/ ${item._id}`;
           //axios(config);
         })
       }
@@ -146,7 +143,7 @@ class App extends Component {
     const id = event.target.id;
     let config = {
       method: 'delete',
-      url: apiUri + id
+      url: config.apiUri + id
     };
       await axios(config);
       this.getData.call(this);
@@ -159,7 +156,7 @@ class App extends Component {
     return (
       <div>
         <header className='header' >
-          <a href={appUrl}>
+          <a href={config.appUrl}>
             <img className='devico_logo' src='./img/devico_logo.svg'/>
           </a>
         </header>
