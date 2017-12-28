@@ -163,7 +163,7 @@ class App extends Component {
             <img className='devico_logo' src='./img/devico_logo.svg'/>
           </a>
         </header>
-        <MuiThemeProvider className='App'>
+        <MuiThemeProvider className='app'>
 
           <div style={{height: '100%', width: '100%'}}>
             <div className='left-menu'>
