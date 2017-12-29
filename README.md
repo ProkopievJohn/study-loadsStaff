@@ -5,8 +5,20 @@ It's pretty application for managment you projects and staff resource.
   - Show projects load
   - Managment available staff
 
-For start:
+Application required:
+
+  - node.js (v8.0.0 and latest)
+  - npm (v5.0.0 and latest)
+  - modgodb (v3.0 and latest)
+
+After clone repository you need install dependencies. In application folder enter in command line
+
+```bash
+  $ npm install
+```
+
+When all dependecies are installed enter
+
 ```bash
   $ npm start
 ```
-And web interface will open in default browser in mew tab
