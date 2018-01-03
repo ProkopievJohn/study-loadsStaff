@@ -6,14 +6,19 @@ import db from './api_server/models/db';
 
 import config from './config/index';
 import apiRoutes from './api_server/router/index';
-import './node_modules/react-scripts/scripts/build';
-
+const env = process.env.NODE_ENV;
 const app = new Koa();
 
 app.use(cors({allowMethods: ['GET', 'POST', 'PUT', 'DELETE']}));
 
 app.use(bodyParser());
-app.use(staticPages(__dirname + '/build'));
+if (env === 'production') {
+  app.use(staticPages(__dirname + '/build'));
+} else {
+  app.use(staticPages(__dirname + '/public'));
+  app.use(staticPages(__dirname + '/src'));
+}
+
 app.use(apiRoutes.routes());
 
 db.connect('mongodb://localhost:27017/pms', function(err) {

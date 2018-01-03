@@ -8,8 +8,8 @@ It's pretty application for managment you projects and staff resource.
 Application required:
 
   - node.js (v8.0.0 and latest)
-  - npm (v5.0.0 and latest)
-  - modgodb (v3.0 and latest)
+  - npm (v5.5.1)
+  - modgodb (v3.4.10)
 
 After clone repository you need install dependencies. In application folder enter in command line
 
@@ -18,6 +18,13 @@ After clone repository you need install dependencies. In application folder ente
 ```
 
 When all dependecies are installed enter
+
+  - once for build react part
+  
+```bash
+  $ npm run build
+```
+  - and then for run application
 
 ```bash
   $ npm start
