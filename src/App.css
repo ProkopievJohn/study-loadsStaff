@@ -2,11 +2,13 @@ body {
   font-family: Roboto, sans-serif;
 }
 
-.App {
+.app {
   float: center;
   margin: 50px;
   height: 100%;
   width: 100%;
+  display: flex;
+  flex-direction: row;
 }
  
 tr:hover {
@@ -76,20 +78,20 @@ table {
 }
 
 .devico_logo {
+  height: 50px;
+  width: 50px;
   margin-left: 10%;
-  margin-top: 10px;
-  width: 70px;
-  height: 70px;
+  margin-top: 20px;
+  height: 50px;
 }
 
 .footer {
   background-color: rgb(53, 53, 53);
-  height: 10px;
   position: absolute;
   right: 0;
   bottom: 0;
   left: 0;
-  padding: 1rem;
+  height: 20px;
   text-align: center;
   display: flex;
   flex-direction: row;
@@ -114,11 +116,16 @@ table {
 }
 
 .left-menu {
-  width: 500px;
+  width: 200px;
   height: 100%;
   margin-top: 90px;
+  margin-left: 10%;
+  display: inline-block;
+  justify-content: flex-start;
 }
 
-.raised_button_employers {
-
+.main-space {
+  height: 100%;
+  margin-top: 90px;
+  display: inline-block;
 }

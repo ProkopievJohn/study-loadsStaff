@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-
+import config from './config.js';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MainTable from './components/mainTable';
 import Button from './components/button';
@@ -8,9 +8,6 @@ import Modal from './components/modal';
 import LeftMenu from './components/leftMenu'
 import controller from './controller';
 import axios from 'axios';
-
- 
-const apiUri = 'http://localhost:3001/api';
 
 
 class App extends Component {
@@ -57,8 +54,8 @@ class App extends Component {
     let data = {users: [], projects: []};
 
     try {
-      data.projects = await controller(apiUri + '/projects', {method: 'GET'});
-      data.users = await controller(apiUri + '/users', {method: 'GET'});
+      data.projects = await controller(config.apiUri + '/projects', {method: 'GET'});
+      data.users = await controller(config.apiUri + '/users', {method: 'GET'});
       if (data.projects && data.users) {
         data.projects.map(async proj => {
           data.users.map((user, i) => {
@@ -105,13 +102,13 @@ class App extends Component {
         name: preset.name,
         projects: arr
       };
-      config.url = `${apiUri} /user/ ${preset._id}`;
+      config.url = `${config.apiUri} /user/ ${preset._id}`;
       await axios(config);
     } else {
       data = {
         name: preset.name
       };
-      config.url = `${apiUri} /project/ ${preset._id}`;
+      config.url = `${config.apiUri} /project/ ${preset._id}`;
       axios(config);
       if (arr && arr.length > 0) {
         arr.map((item) => {
@@ -133,7 +130,7 @@ class App extends Component {
             }
           })
           console.log(data);
-          config.url = `${apiUri} /users/ ${item._id}`;
+          config.url = `${config.apiUri} /users/ ${item._id}`;
           //axios(config);
         })
       }
@@ -146,7 +143,7 @@ class App extends Component {
     const id = event.target.id;
     let config = {
       method: 'delete',
-      url: apiUri + id
+      url: config.apiUri + id
     };
       await axios(config);
       this.getData.call(this);
@@ -158,41 +155,48 @@ class App extends Component {
 
     return (
       <div>
-        <header className='header' href='/'>
-          <a className='devico_logo'>
-            <img src='./img/devico_logo.svg' height='70px' width='70px'/>
+        <header className='header' >
+          <a href={config.appUrl}>
+            <img className='devico_logo' src='./img/devico_logo.svg'/>
           </a>
         </header>
-        <MuiThemeProvider className='App'>
+        <MuiThemeProvider className='app'>
 
           <div style={{height: '100%', width: '100%'}}>
             <div className='left-menu'>
               <LeftMenu 
-                label={'Employeers'}
+                label='Employeers'
+                data={renderData.users}
+
+              />
+              <LeftMenu 
+                label='Projects'
                 data={renderData.users}
 
               />
             </div>
-            <div className='btn_panel'>
-              <Button showModal={() => this.showModal('user', 'Add', false, 'projects')} btnName='Add user' className='top_btn'/>
-              <Button showModal={() => this.showModal('project', 'Add', false, 'users')} btnName='Add project' className='top_btn'/>
+            <div className='main-space'>
+              <div className='btn_panel'>
+                <Button btnName='Show users' className='top_btn'/>
+                <Button btnName='Show projects' className='top_btn'/>
+              </div>
+
+              <div>
+                <MainTable className='main' data={renderData} />
+              </div>
+
+              <Modal 
+                    data={renderData}
+                    preset={preset}
+                    handlerSubmit={this.handlerSubmit}
+                    closeModal={this.closeModal} 
+                    elementType={elementType}
+                    elementAction={elementAction}
+                    open={showModal}
+                    list={list}
+              /> 
+
             </div>
-
-            <div>
-              <MainTable className='main' data={renderData} />
-            </div>
-
-            <Modal 
-                  data={renderData}
-                  preset={preset}
-                  handlerSubmit={this.handlerSubmit}
-                  closeModal={this.closeModal} 
-                  elementType={elementType}
-                  elementAction={elementAction}
-                  open={showModal}
-                  list={list}
-            /> 
-
           </div>  
         </MuiThemeProvider>
         <footer className='footer'>
